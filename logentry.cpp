@@ -37,15 +37,15 @@ LogEntry::operator std::string() const {
 std::string LogEntry::severityLevelToString(SeverityLevel level) const
 {
     switch (level) {
-    case SeverityLevel::DEBUG:
+    case SeverityLevel::debug:
         return "DEBUG";
-    case SeverityLevel::INFO:
+    case SeverityLevel::info:
         return "INFO";
-    case SeverityLevel::WARNING:
+    case SeverityLevel::warning:
         return "WARNING";
-    case SeverityLevel::ERROR:
+    case SeverityLevel::error:
         return "ERROR";
-    case SeverityLevel::CRITICAL:
+    case SeverityLevel::critical:
         return "CRITICAL";
     default:
         return "UNKNOWN";

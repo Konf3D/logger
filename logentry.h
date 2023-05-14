@@ -3,11 +3,11 @@
 #include "timestamp.h"
 
 enum class SeverityLevel {
-    DEBUG,
-    INFO,
-    WARNING,
-    ERROR,
-    CRITICAL
+    debug,
+    info,
+    warning,
+    error,
+    critical
 };
 
 class LogEntry {
