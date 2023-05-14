@@ -13,58 +13,16 @@ enum class SeverityLevel {
 
 class LogEntry {
 public:
-    LogEntry(const std::string& message, SeverityLevel severityLevel)
-        : message(message), severityLevel(severityLevel) {
-        timestamp = time_stamp();
-    }
+    LogEntry(const std::string& message, SeverityLevel severityLevel);
+    ~LogEntry() = default;
 
-    void setLogger(const std::string& logger) {
-        this->logger = logger;
-    }
-
-    void setThreadID(int threadID) {
-        this->threadID = threadID;
-    }
-
-    void setAdditionalMetadata(const std::string& key, const std::string& value) {
-        additionalMetadata[key] = value;
-    }
-
-    operator std::string() const {
-        std::string logString;
-        logString += "[" + timestamp + "]";
-        logString += " [" + severityLevelToString(severityLevel) + "]";
-        if (!logger.empty()) {
-            logString += " [" + logger + "]";
-        }
-        if (threadID >= 0) {
-            logString += " [Thread ID: " + std::to_string(threadID) + "]";
-        }
-        for (const auto& data : additionalMetadata) {
-            logString += " [" + data.first + ": " + data.second + "]";
-        }
-        logString += " " + message;
-        return logString;
-    }
+    void setLogger(const std::string& logger);
+    void setThreadID(int threadID);
+    void setAdditionalMetadata(const std::string& key, const std::string& value);
+    operator std::string() const;
 
 private:
-
-    std::string severityLevelToString(SeverityLevel level) const {
-        switch (level) {
-        case SeverityLevel::DEBUG:
-            return "DEBUG";
-        case SeverityLevel::INFO:
-            return "INFO";
-        case SeverityLevel::WARNING:
-            return "WARNING";
-        case SeverityLevel::ERROR:
-            return "ERROR";
-        case SeverityLevel::CRITICAL:
-            return "CRITICAL";
-        default:
-            return "UNKNOWN";
-        }
-    }
+    std::string severityLevelToString(SeverityLevel level) const;
 
     std::string timestamp;
     std::string message;
