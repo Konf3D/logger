@@ -23,7 +23,7 @@ std::tm get_local_time(std::time_t timer)
 }
 
 // Returns the current time stamp as a string in the specified format.
-std::string time_stamp(const std::string& fmt = "%F %T")
+std::string time_stamp(const std::string& fmt)
 {
     //remake//https://stackoverflow.com/a/38034148
     auto bt = get_local_time(std::time(nullptr));
