@@ -1,30 +1,17 @@
 #pragma once
 #include <chrono>
 #include <ctime>
-#include <sstream>
-#include <iomanip>
+
+// Timestamp as string with format YYYY-MM-DD HH-MM-SS.
+class TimeStamp
+{
+public:
+    operator std::string() const
+    {
+        return time_stamp();
+    }
+};
 // Returns the local time as a std::tm struct.
-inline std::tm get_local_time(std::time_t timer)
-{
-    //remake//https://stackoverflow.com/a/38034148
-    std::tm bt{};
-#if defined(__unix__)
-    localtime_r(&timer, &bt);
-#elif defined(_WIN32)
-    localtime_s(&bt, &timer);
-#else
-    static std::mutex mtx;
-    std::scoped_lock lock(mtx);
-    bt = *std::localtime(&timer);
-#endif
-    return bt;
-}
+std::tm get_local_time(std::time_t timer);
 // Returns the current time stamp as a string in the specified format.
-inline std::string time_stamp(const std::string& fmt = "%F %T")
-{
-    //remake//https://stackoverflow.com/a/38034148
-    auto bt = get_local_time(std::time(nullptr));
-    std::ostringstream oss;
-    oss << std::put_time(&bt, fmt.c_str());
-    return oss.str();
-}
+std::string time_stamp(const std::string& fmt = "%F %T");
