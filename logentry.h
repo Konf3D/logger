@@ -1,8 +1,7 @@
-#include <iostream>
 #include <string>
-#include <chrono>
 #include <unordered_map>
 #include "timestamp.h"
+
 enum class SeverityLevel {
     DEBUG,
     INFO,

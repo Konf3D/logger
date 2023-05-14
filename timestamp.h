@@ -1,5 +1,4 @@
 #pragma once
-#include <chrono>
 #include <ctime>
 
 // Timestamp as string with format YYYY-MM-DD HH-MM-SS.
